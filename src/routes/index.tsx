@@ -18,11 +18,12 @@ const Index = () => {
         `http://localhost:3000/object?object=${object}`
       );
       const text = await result.text();
-      console.log("{" + text + "}");
-      const parsed = JSON.parse("{" + text + "}");
+      console.log(text);
+      const parsed = JSON.parse(text);
       setSafety(parsed.safety);
       setType(parsed.status);
       setDesc(parsed.description);
+      setObject(object);
       setShownPopup(true);
       console.log(text);
     }
@@ -97,7 +98,9 @@ const Popup = ({
           <h1 className="text-2xl font-black">{object}</h1>
           <i className="bi-x-cirlce" />
         </span>
-        <h2>{type}</h2>
+        <h2>
+          {type} - Safety Rating: {safety}/10
+        </h2>
         <p className="font-extralight">{desc}</p>
       </div>
     </div>
