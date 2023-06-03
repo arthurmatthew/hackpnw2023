@@ -1,4 +1,8 @@
 const Index = () => {
+  function moveer(){
+    console.log("i")
+    window.location.href = window.location.href+"upload";
+  }
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-10 px-40">
       <h1 className="text-center text-7xl font-black">
@@ -9,7 +13,7 @@ const Index = () => {
         with a scan.
       </h1>
       <div className="flex flex-col gap-2 text-white">
-        <button className="h-12 w-96 rounded-lg bg-black shadow-sm">
+        <button onClick={moveer} className="h-12 w-96 rounded-lg bg-black shadow-sm">
           Get a picture
         </button>
         <div className="flex h-12 w-96 items-center">
@@ -18,11 +22,13 @@ const Index = () => {
             type="text"
             placeholder="Or use text"
           />
-          <button className="flex h-12 w-12 items-center justify-center rounded-r-lg bg-black">
+          <button  className="flex h-12 w-12 items-center justify-center rounded-r-lg bg-black">
             <i className="bi-search text-lg text-white" />
           </button>
         </div>
       </div>
+      
+      
     </div>
   );
 };
