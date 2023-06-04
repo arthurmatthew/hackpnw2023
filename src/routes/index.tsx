@@ -34,14 +34,14 @@ const Index = () => {
   const handleByText = async () => {
     const object = text;
     setText("");
-    if (text != "" && text != "Test") {
+    if (text != "" && text != "Bananas") {
       const result = await fetch(
         `http://localhost:3000/object?object=${object}`
       );
       const text = await result.text();
       const parsed = JSON.parse(text);
       showPopup(parsed.safety, parsed.status, parsed.description, object);
-    } else if (text == "Test") {
+    } else if (text == "Bananas") {
       const result = await fetch(`http://localhost:3000/test`);
       const text = await result.text();
       const parsed = JSON.parse(text);
@@ -61,12 +61,7 @@ const Index = () => {
       });
       const text = await results.text();
       const parsed = JSON.parse(text);
-      showPopup(
-        parsed.safety,
-        parsed.status,
-        parsed.description,
-        "Temp object"
-      );
+      showPopup(parsed.safety, parsed.status, parsed.description, "Photo");
     }
   };
 
