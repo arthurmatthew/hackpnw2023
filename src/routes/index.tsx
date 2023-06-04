@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./index.css";
 
 import { motion } from "framer-motion";
@@ -18,6 +18,19 @@ const Index = () => {
   const [type, setType] = useState("");
   const [desc, setDesc] = useState("");
 
+  const showPopup = (
+    safety: number,
+    status: string,
+    description: string,
+    object: string
+  ) => {
+    setSafety(safety);
+    setType(status);
+    setDesc(description);
+    setObject(object);
+    setShownPopup(true);
+  };
+
   const handleByText = async () => {
     const object = text;
     setText("");
@@ -28,23 +41,36 @@ const Index = () => {
       const text = await result.text();
       console.log(text);
       const parsed = JSON.parse(text);
-      setSafety(parsed.safety);
-      setType(parsed.status);
-      setDesc(parsed.description);
-      setObject(object);
-      setShownPopup(true);
+      showPopup(parsed.safety, parsed.status, parsed.description, object);
       console.log(text);
     } else if (text == "Test") {
       const result = await fetch(`http://localhost:3000/test`);
       const text = await result.text();
       console.log(text);
       const parsed = JSON.parse(text);
-      setSafety(parsed.safety);
-      setType(parsed.status);
-      setDesc(parsed.description);
-      setObject(object);
-      setShownPopup(true);
+      showPopup(parsed.safety, parsed.status, parsed.description, object);
       console.log(text);
+    }
+  };
+
+  const submitImageForm = async () => {
+    console.log("Attempting submit");
+    const input = document.getElementById("photoUpload") as HTMLInputElement;
+    const formData = new FormData();
+    if (input.files !== null) {
+      formData.append("file", input.files[0]);
+      const results = await fetch("http://localhost:3000/image", {
+        method: "POST",
+        body: formData,
+      });
+      const text = await results.text();
+      const parsed = JSON.parse(text);
+      showPopup(
+        parsed.safety,
+        parsed.status,
+        parsed.description,
+        "Temp object"
+      );
     }
   };
 
@@ -86,7 +112,11 @@ const Index = () => {
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <form method="POST" action="/image" encType="multipart/form-data">
+            <form
+              method="POST"
+              action="http://localhost:3000/image"
+              encType="multipart/form-data"
+            >
               <motion.label
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -98,7 +128,14 @@ const Index = () => {
                 className="flex h-12 w-80 items-center justify-center rounded-lg bg-blue-700 shadow-sm duration-75 hover:bg-blue-600 sm:w-96"
               >
                 Snap a picture
-                <input type="file" className="hidden" accept="image/*" />
+                <input
+                  id="photoUpload"
+                  type="file"
+                  name="uploaded"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={() => submitImageForm()}
+                />
               </motion.label>
             </form>
           </motion.span>
@@ -132,7 +169,7 @@ const Index = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{
               duration: 0.7,
-              delay: 0.4,
+              delay: 0.6,
               ease: "easeInOut",
             }}
           >
