@@ -39,14 +39,11 @@ const Index = () => {
         `http://localhost:3000/object?object=${object}`
       );
       const text = await result.text();
-      console.log(text);
       const parsed = JSON.parse(text);
       showPopup(parsed.safety, parsed.status, parsed.description, object);
-      console.log(text);
     } else if (text == "Test") {
       const result = await fetch(`http://localhost:3000/test`);
       const text = await result.text();
-      console.log(text);
       const parsed = JSON.parse(text);
       showPopup(parsed.safety, parsed.status, parsed.description, object);
       console.log(text);
@@ -54,7 +51,6 @@ const Index = () => {
   };
 
   const submitImageForm = async () => {
-    console.log("Attempting submit");
     const input = document.getElementById("photoUpload") as HTMLInputElement;
     const formData = new FormData();
     if (input.files !== null) {
