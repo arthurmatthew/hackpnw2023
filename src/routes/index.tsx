@@ -98,7 +98,7 @@ const Index = () => {
           </i>{" "}
           with a snap.
         </motion.h1>
-        <div className="flex flex-col gap-2 text-white">
+        <div className="flex flex-col items-center justify-center gap-2 text-white">
           <motion.span
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
