@@ -1,4 +1,11 @@
 import { useState } from "react";
+import "./index.css";
+
+import { motion } from "framer-motion";
+
+import Heart from "../assets/undraw_heart.svg";
+import Bird from "../assets/undraw_bird.svg";
+import Tree from "../assets/undraw_tree.svg";
 import Logo from "../assets/logo_with_text_transparant.png";
 
 const Index = () => {
@@ -43,47 +50,132 @@ const Index = () => {
       ) : (
         <></>
       )}
-      <div className="flex h-screen w-screen flex-col items-center justify-center gap-6 bg-gray-50 px-4 md:px-12 xl:px-40">
+      <div
+        id="landing"
+        className="flex h-screen w-screen flex-col items-center justify-center gap-6 bg-gray-100 px-4 md:px-12 xl:px-40"
+      >
         {/* <img src={Logo} alt="EcoSort Logo" className="h-52" /> */}
-        <h1 className="text-center text-2xl font-black sm:text-4xl lg:text-7xl">
+        <motion.h1
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.7,
+            ease: "easeInOut",
+          }}
+          className="xs:text-6xl text-center text-5xl font-black lg:text-7xl"
+        >
           Save the{" "}
           <i className="bg-gradient-to-tr from-green-400 to-green-600 bg-clip-text not-italic text-transparent">
             environment
           </i>{" "}
-          with a scan.
-        </h1>
+          with a snap.
+        </motion.h1>
         <div className="flex flex-col gap-2 text-white">
-          <label className="flex h-12 w-80 items-center justify-center rounded-lg bg-black shadow-sm sm:w-96">
-            Get a picture
-            <input type="file" className="hidden" accept="image/*" />
-          </label>
-          <div className="flex h-12 w-80 items-center sm:w-96">
+          <motion.span
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <motion.label
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.2,
+                ease: "easeInOut",
+              }}
+              className="flex h-12 w-80 items-center justify-center rounded-lg bg-blue-700 shadow-sm duration-75 hover:bg-blue-600 sm:w-96"
+            >
+              Get a picture
+              <input type="file" className="hidden" accept="image/*" />
+            </motion.label>
+          </motion.span>
+          <motion.div
+            className="group flex h-12 w-80 items-center sm:w-96"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.4,
+              ease: "easeInOut",
+            }}
+          >
             <input
-              className="h-full flex-grow rounded-lg rounded-r-none border-2 border-solid border-black p-2 text-black shadow-inner focus:outline-0"
+              className="h-full flex-grow rounded-lg rounded-r-none border-2 border-solid border-blue-700 p-2 text-black shadow-inner duration-75 focus:outline-0 group-hover:border-blue-600"
               type="text"
-              placeholder="Or use text"
+              placeholder="Or use text. Try typing 'banana'"
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
             <button
               onClick={() => handleByText()}
-              className="flex h-12 w-12 items-center justify-center rounded-r-lg bg-black"
+              className="flex h-12 w-12 items-center justify-center rounded-r-lg bg-blue-700 duration-75 group-hover:bg-blue-600"
             >
               <i className="bi-search text-lg text-white" />
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <div className="flex flex-col gap-6 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
-        <h1 className="text-4xl font-black">About EcoSort</h1>
-        <p className="text-lg">
-          EcoSort is a state of the art web application which helps you sort
-          your garbage accordingly. EcoSort is powered by intensively trained
-          artificial intelligence. The days of dumping everything into the
-          garbage can are over. With EcoSort, a single click can tell you what
-          kind of garbage you're dealing with and how to dispose of it
-          correctly.
-        </p>
+      <div id="about">
+        <div className="flex flex-col gap-6 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
+          <h1 className="text-4xl font-black text-blue-900">About EcoSort</h1>
+          <span className="flex items-center">
+            <p className="lora pr-2 text-xl sm:pr-24 md:pr-56 xl:pr-96">
+              EcoSort is a user-friendly, state-of-the-art, AI-powered web
+              application which helps you{" "}
+              <i className="font-black not-italic text-blue-800">
+                sort your garbage
+              </i>{" "}
+              appropriately. The days of dumping everything into the garbage can
+              are over. With EcoSort, a single click can tell you all the
+              information you need to dispose of something correctly for the
+              good of the environment.
+            </p>
+            <img src={Tree} className="opacity-20" />
+          </span>
+        </div>
+        <div className="flex flex-col gap-6 px-4 md:px-20 lg:px-40 xl:px-56">
+          <h3 className="italic opacity-50">
+            Fun fact: Each ton (2,000 pounds) of recycled paper can save 17
+            trees.
+          </h3>
+        </div>
+        <div className="flex flex-col gap-6 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
+          <h1 className="text-right text-4xl font-black text-blue-900">
+            Learn the Facts
+          </h1>
+          <span className="flex items-center">
+            <img src={Heart} className="opacity-20" />
+            <p className="lora pl-2 text-right text-xl sm:pl-24 md:pl-56 xl:pl-96">
+              According to various professionals, only about 32 percent of
+              recycling is actually recycled. When trash is incorrectly disposed
+              of, it ends up{" "}
+              <i className="font-black not-italic text-blue-800">
+                polluting the Earth
+              </i>
+              , even if you had good intentions. So next time you dispose of
+              trash, ask yourself if you're sure of where it goes. Chances are-
+              you aren't.
+            </p>
+          </span>
+        </div>
+        <div className="flex flex-col gap-6 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
+          <h1 className="text-4xl font-black text-blue-900">How it Works</h1>
+          <span className="flex items-center">
+            <p className="lora pr-2 text-xl sm:pr-24 md:pr-56 xl:pr-96">
+              Our app is completely powered by{" "}
+              <i className="font-black not-italic text-blue-800">
+                artificial intelligence
+              </i>
+              . When you take a picture, it is securely transferred to our
+              servers where it is analyzed by AI. From here, our machines come
+              up with correct information on disposal, safety, and more.
+            </p>
+            <img src={Bird} className="opacity-20" />
+          </span>
+        </div>
+        <div className="flex w-full items-center justify-center pb-6">
+          <img src={Logo} className="w-96" />
+        </div>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import Logo from "./assets/logo.png";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <header className="sticky top-0 flex h-20 w-full items-center bg-green-500 p-2">
+      <header className="sticky top-0 z-50 flex h-20 w-full items-center bg-green-500 p-2 shadow-2xl">
         <img src={Logo} className="h-full" />
       </header>
       <main>{children}</main>
