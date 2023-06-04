@@ -42,8 +42,8 @@ const Index = () => {
       ) : (
         <></>
       )}
-      <div className="flex h-screen w-screen flex-col items-center justify-center gap-10 px-40">
-        <h1 className="text-center text-7xl font-black">
+      <div className="flex h-screen w-screen flex-col items-center justify-center gap-10 bg-gray-50 px-4 md:px-12 xl:px-40">
+        <h1 className="text-center text-2xl font-black sm:text-4xl lg:text-7xl">
           Save the{" "}
           <i className="bg-gradient-to-tr from-green-400 to-green-600 bg-clip-text not-italic text-transparent">
             environment
@@ -51,11 +51,11 @@ const Index = () => {
           with a scan.
         </h1>
         <div className="flex flex-col gap-2 text-white">
-          <label className="flex h-12 w-96 items-center justify-center rounded-lg bg-black shadow-sm">
+          <label className="flex h-12 w-80 items-center justify-center rounded-lg bg-black shadow-sm sm:w-96">
             Get a picture
             <input type="file" className="hidden" accept="image/*" />
           </label>
-          <div className="flex h-12 w-96 items-center">
+          <div className="flex h-12 w-80 items-center sm:w-96">
             <input
               className="h-full flex-grow rounded-lg rounded-r-none border-2 border-solid border-black p-2 text-black shadow-inner focus:outline-0"
               type="text"
@@ -71,6 +71,17 @@ const Index = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="flex flex-col gap-6 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
+        <h1 className="text-4xl font-black">About EcoSort</h1>
+        <p className="text-lg">
+          EcoSort is a state of the art web application which helps you sort
+          your garbage accordingly. EcoSort is powered by intensively trained
+          artificial intelligence. The days of dumping everything into the
+          garbage can are over. With EcoSort, a single click can tell you what
+          kind of garbage you're dealing with and how to dispose of it
+          correctly.
+        </p>
       </div>
     </>
   );
@@ -92,7 +103,7 @@ const Popup = ({
   return (
     <div
       onClick={() => hide(false)}
-      className="absolute left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/25 p-28"
+      className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/25 p-4 lg:p-28"
     >
       <div className="rounded-xl border-2 border-solid border-green-800 bg-white p-4 shadow-xl">
         <span className="flex items-center justify-between gap-2">
