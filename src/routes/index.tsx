@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./index.css";
 
 import { motion } from "framer-motion";
@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Heart from "../assets/undraw_heart.svg";
 import Bird from "../assets/undraw_bird.svg";
 import Tree from "../assets/undraw_tree.svg";
-import Logo from "../assets/logo_with_text_transparant.png";
+import Group from "../assets/groupPhoto.jfif";
 
 const Index = () => {
   const [shownPopup, setShownPopup] = useState(false);
@@ -231,8 +231,34 @@ const Index = () => {
             <img src={Bird} />
           </span>
         </div>
-        <div className="flex w-full items-center justify-center pb-6">
-          <img src={Logo} className="w-96" />
+      </div>
+      <div id="team">
+        <div className="flex flex-col items-center justify-center gap-2 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
+          <h1 className="text-center text-4xl font-black text-blue-900">
+            Meet the Team
+          </h1>
+          <p className="lora text-center text-xl">
+            EcoSoft is made by a four person team of passionate developers.
+            Check us out!
+          </p>
+          <img className="h-auto w-96 pt-10" src={Group} alt="Team" />
+          <p className="text-center text-sm">From left to right:</p>
+          <ol className="lora list-disc underline">
+            <li>
+              <a href="https://www.github.com/saiawe2021">
+                Sai Srinivas Pasyavula
+              </a>
+            </li>
+            <li>
+              <a href="https://www.github.com/sebas101-1">Sebastien Kaku</a>
+            </li>
+            <li>
+              <a href="https://www.github.com/arthurmatthew">Matthew Arthur</a>
+            </li>
+            <li>
+              <a href="https://www.github.com/harry695">Harry Ouyang</a>
+            </li>
+          </ol>
         </div>
       </div>
     </>
