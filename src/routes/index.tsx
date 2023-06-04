@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Logo from "../assets/logo_with_text_transparant.png";
 
 const Index = () => {
   const [shownPopup, setShownPopup] = useState(false);
@@ -42,7 +43,8 @@ const Index = () => {
       ) : (
         <></>
       )}
-      <div className="flex h-screen w-screen flex-col items-center justify-center gap-10 bg-gray-50 px-4 md:px-12 xl:px-40">
+      <div className="flex h-screen w-screen flex-col items-center justify-center gap-6 bg-gray-50 px-4 md:px-12 xl:px-40">
+        {/* <img src={Logo} alt="EcoSort Logo" className="h-52" /> */}
         <h1 className="text-center text-2xl font-black sm:text-4xl lg:text-7xl">
           Save the{" "}
           <i className="bg-gradient-to-tr from-green-400 to-green-600 bg-clip-text not-italic text-transparent">
