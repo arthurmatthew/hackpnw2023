@@ -76,7 +76,7 @@ const Index = () => {
           className="xs:text-6xl text-center text-5xl font-black lg:text-7xl"
         >
           Save the{" "}
-          <i className="bg-gradient-to-tr from-green-400 to-green-600 bg-clip-text not-italic text-transparent">
+          <i className="bg-gradient-to-tr from-green-400 to-blue-600 bg-clip-text not-italic text-transparent">
             environment
           </i>{" "}
           with a snap.
@@ -86,19 +86,21 @@ const Index = () => {
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <motion.label
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.2,
-                ease: "easeInOut",
-              }}
-              className="flex h-12 w-80 items-center justify-center rounded-lg bg-blue-700 shadow-sm duration-75 hover:bg-blue-600 sm:w-96"
-            >
-              Get a picture
-              <input type="file" className="hidden" accept="image/*" />
-            </motion.label>
+            <form method="POST" action="/image" encType="multipart/form-data">
+              <motion.label
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.2,
+                  ease: "easeInOut",
+                }}
+                className="flex h-12 w-80 items-center justify-center rounded-lg bg-blue-700 shadow-sm duration-75 hover:bg-blue-600 sm:w-96"
+              >
+                Snap a picture
+                <input type="file" className="hidden" accept="image/*" />
+              </motion.label>
+            </form>
           </motion.span>
           <motion.div
             className="group flex h-12 w-80 items-center sm:w-96"
@@ -124,6 +126,18 @@ const Index = () => {
               <i className="bi-search text-lg text-white" />
             </button>
           </motion.div>
+          <motion.p
+            className="text-center text-sm text-black/50"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.4,
+              ease: "easeInOut",
+            }}
+          >
+            Check if an object belongs in the trash, recycling, or compost.
+          </motion.p>
         </div>
       </div>
       <div id="about">
