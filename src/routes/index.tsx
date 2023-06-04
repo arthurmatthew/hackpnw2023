@@ -21,10 +21,21 @@ const Index = () => {
   const handleByText = async () => {
     const object = text;
     setText("");
-    if (text != "") {
+    if (text != "" && text != "Test") {
       const result = await fetch(
         `http://localhost:3000/object?object=${object}`
       );
+      const text = await result.text();
+      console.log(text);
+      const parsed = JSON.parse(text);
+      setSafety(parsed.safety);
+      setType(parsed.status);
+      setDesc(parsed.description);
+      setObject(object);
+      setShownPopup(true);
+      console.log(text);
+    } else if (text == "Test") {
+      const result = await fetch(`http://localhost:3000/test`);
       const text = await result.text();
       console.log(text);
       const parsed = JSON.parse(text);
@@ -130,11 +141,11 @@ const Index = () => {
               information you need to dispose of something correctly for the
               good of the environment.
             </p>
-            <img src={Tree} className="opacity-20" />
+            <img src={Tree} />
           </span>
         </div>
         <div className="flex flex-col gap-6 px-4 md:px-20 lg:px-40 xl:px-56">
-          <h3 className="italic opacity-50">
+          <h3 className="italic text-black/25">
             Fun fact: Each ton (2,000 pounds) of recycled paper can save 17
             trees.
           </h3>
@@ -144,7 +155,7 @@ const Index = () => {
             Learn the Facts
           </h1>
           <span className="flex items-center">
-            <img src={Heart} className="opacity-20" />
+            <img src={Heart} />
             <p className="lora pl-2 text-right text-xl sm:pl-24 md:pl-56 xl:pl-96">
               According to various professionals, only about 32 percent of
               recycling is actually recycled. When trash is incorrectly disposed
@@ -170,7 +181,7 @@ const Index = () => {
               servers where it is analyzed by AI. From here, our machines come
               up with correct information on disposal, safety, and more.
             </p>
-            <img src={Bird} className="opacity-20" />
+            <img src={Bird} />
           </span>
         </div>
         <div className="flex w-full items-center justify-center pb-6">
@@ -195,11 +206,18 @@ const Popup = ({
   desc: string;
 }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       onClick={() => hide(false)}
       className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/25 p-4 lg:p-28"
     >
-      <div className="rounded-xl border-2 border-solid border-green-800 bg-white p-4 shadow-xl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        className="z-50 rounded-xl bg-white p-4 shadow-xl"
+      >
         <span className="flex items-center justify-between gap-2">
           <h1 className="text-2xl font-black">{object}</h1>
           <i className="bi-x-cirlce" />
@@ -208,8 +226,8 @@ const Popup = ({
           {type} - Safety Rating: {safety}/10
         </h2>
         <p className="font-extralight">{desc}</p>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
