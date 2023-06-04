@@ -51,9 +51,10 @@ const Index = () => {
           with a scan.
         </h1>
         <div className="flex flex-col gap-2 text-white">
-          <button className="h-12 w-96 rounded-lg bg-black shadow-sm">
+          <label className="flex h-12 w-96 items-center justify-center rounded-lg bg-black shadow-sm">
             Get a picture
-          </button>
+            <input type="file" className="hidden" accept="image/*" />
+          </label>
           <div className="flex h-12 w-96 items-center">
             <input
               className="h-full flex-grow rounded-lg rounded-r-none border-2 border-solid border-black p-2 text-black shadow-inner focus:outline-0"
