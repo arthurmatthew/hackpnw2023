@@ -231,8 +231,24 @@ const Index = () => {
             <img src={Bird} />
           </span>
         </div>
-      </div>
-      <div id="team">
+        <div className="flex flex-col gap-6 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
+          <h1 className="text-right text-4xl font-black text-blue-900">
+            Our Mission
+          </h1>
+          <span className="flex items-center">
+            <img src={Tree} />
+            <p className="lora pl-2 text-right text-xl sm:pl-24 md:pl-56 xl:pl-96">
+              One day, one of our team members was walking down the street. He
+              noticed something flabbergasting. A Best Buy employee was dumping
+              hundreds of broken phones into the landfill. This was insane. They
+              should've properly disposed of their phones. Maybe they didn't
+              how- but that's exaclty our mission. We want to make it so easy to
+              put your trash in the right place that there will never be an
+              issue again.
+            </p>
+          </span>
+        </div>
+        <div id="team"></div>
         <div className="flex flex-col items-center justify-center gap-2 px-4 py-12 md:px-20 lg:px-40 xl:px-56">
           <h1 className="text-center text-4xl font-black text-blue-900">
             Meet the Team
@@ -243,7 +259,7 @@ const Index = () => {
           </p>
           <img className="h-auto w-96 pt-10" src={Group} alt="Team" />
           <p className="text-center text-sm">From left to right:</p>
-          <ol className="lora list-disc underline">
+          <ol className="lora rounded-md bg-gray-100 p-5 underline">
             <li>
               <a href="https://www.github.com/saiawe2021">
                 Sai Srinivas Pasyavula
